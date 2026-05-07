@@ -1,53 +1,16 @@
-# 🇧🇷 Consumo e Análise da API do IBGE
+# Consumo e Análise da API do IBGE
 
-> **Disciplina:** Desenvolvimento de APIs REST  
+> **Disciplina:** Desenvolvimento Web II 
 > **API escolhida:** IBGE Serviço de Dados — Localidades  
 > **Documentação oficial:** https://servicodados.ibge.gov.br/api/docs/localidades
 
 ---
 
-## 📁 Estrutura do Projeto
-
-```
-ibge-api-trabalho/
-├── src/
-│   └── server.js                  # Servidor Node.js + Express
-├── postman/
-│   └── IBGE_API_Colecao.postman_collection.json
-├── exemplos-resposta/
-│   └── respostas.json             # Exemplos reais das respostas
-├── package.json
-└── README.md
-```
-
----
-
-## 🚀 Como Rodar
-
-```bash
-# 1. Instalar dependências
-npm install
-
-# 2. Rodar o servidor
-npm start
-# ou com hot-reload:
-npm run dev
-
-# Servidor disponível em: http://localhost:3000
-```
-
----
-
-## 📋 Análise da API — Perguntas Obrigatórias
+## 📋 Análise da API — Perguntas
 
 ### 1. Qual o propósito da API?
 
-A **API de Serviço de Dados do IBGE** é uma API REST pública mantida pelo Instituto Brasileiro de Geografia e Estatística. Ela fornece acesso programático a dados oficiais do Brasil, incluindo:
-
-- **Localidades** (estados, municípios, regiões, mesorregiões, microrregiões)
-- **Indicadores** (PIB, IDH, população por município)
-- **Malhas geográficas** (shapefile, GeoJSON)
-- **Agregados e séries históricas** (dados do Censo, PNAD, etc.)
+A ***API de Serviço de Dados do IBGE tem como principal objetivo disponibilizar dados oficiais do Brasil de forma pública e acessível pela internet. Por meio dela, desenvolvedores conseguem consultar informações sobre estados, municípios, regiões e diversos indicadores estatísticos sem precisar acessar manualmente o site do IBGE.
 
 Neste trabalho, utilizamos o módulo **Localidades**, que é o mais simples e didático para demonstrar o consumo de uma API REST.
 
@@ -302,3 +265,37 @@ Todos os erros passam pela função `handleError()`, que diferencia:
 
 - **Swagger UI do IBGE:** https://servicodados.ibge.gov.br/api/docs/localidades
 - **Portal de APIs do IBGE:** https://servicodados.ibge.gov.br/api/docs
+
+
+## 📁 Estrutura do Projeto
+
+```
+ibge-api-trabalho/
+├── src/
+│   └── server.js                  # Servidor Node.js + Express
+├── postman/
+│   └── IBGE_API_Colecao.postman_collection.json
+├── exemplos-resposta/
+│   └── respostas.json             # Exemplos reais das respostas
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Como Rodar
+
+```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Rodar o servidor
+npm start
+# ou com hot-reload:
+npm run dev
+
+# Servidor disponível em: http://localhost:3000
+```
+
+---
+
