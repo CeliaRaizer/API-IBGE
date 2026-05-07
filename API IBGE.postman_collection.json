@@ -1,0 +1,158 @@
+{
+  "info": {
+    "_postman_id": "f3645e55-c49f-49bb-aaad-62dbbe19d47d",
+    "name": "API IBGE",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49325871",
+    "_collection_link": "https://go.postman.co/collection/49325871-f3645e55-c49f-49bb-aaad-62dbbe19d47d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Estados",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/estados",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "estados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Dados Estados",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/estados/SC",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "estados",
+            "SC"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar Município",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/municipios/busca?nome=ibiam",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "municipios",
+            "busca"
+          ],
+          "query": [
+            {
+              "key": "nome",
+              "value": "ibiam",
+              "type": "text",
+              "id": 0
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar Região",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/regioes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "regioes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Municipios de estado",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/estados/PR/municipios",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "estados",
+            "PR",
+            "municipios"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Estados por região",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/regioes/4/estados",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "regioes",
+            "4",
+            "estados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Documentação",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

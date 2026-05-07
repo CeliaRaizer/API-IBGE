@@ -1,0 +1,126 @@
+{
+  "comentario": "Exemplos reais de respostas da API do IBGE — coletados para documentação do trabalho",
+
+  "GET /estados (resposta do servidor local)": {
+    "total": 27,
+    "fonte": "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
+    "dados": [
+      {
+        "id": 12,
+        "sigla": "AC",
+        "nome": "Acre",
+        "regiao": {
+          "id": 1,
+          "sigla": "N",
+          "nome": "Norte"
+        }
+      },
+      {
+        "id": 27,
+        "sigla": "AL",
+        "nome": "Alagoas",
+        "regiao": {
+          "id": 2,
+          "sigla": "NE",
+          "nome": "Nordeste"
+        }
+      },
+      "... (27 estados no total)"
+    ]
+  },
+
+  "GET /estados/PR (resposta do servidor local)": {
+    "fonte": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR",
+    "dados": {
+      "id": 41,
+      "sigla": "PR",
+      "nome": "Paraná",
+      "regiao": {
+        "id": 4,
+        "sigla": "S",
+        "nome": "Sul"
+      }
+    }
+  },
+
+  "GET /estados/PR/municipios (parcial)": {
+    "estado": "Paraná",
+    "sigla": "PR",
+    "total_municipios": 399,
+    "fonte": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios",
+    "dados": [
+      {
+        "id": 4100103,
+        "nome": "Abatiá",
+        "microrregiao": {
+          "id": 41011,
+          "nome": "Jacarezinho",
+          "mesorregiao": {
+            "id": 4102,
+            "nome": "Norte Pioneiro Paranaense",
+            "UF": {
+              "id": 41,
+              "sigla": "PR",
+              "nome": "Paraná",
+              "regiao": { "id": 4, "sigla": "S", "nome": "Sul" }
+            }
+          }
+        },
+        "regiao-imediata": {
+          "id": 410011,
+          "nome": "Jacarezinho",
+          "regiao-intermediaria": {
+            "id": 4104,
+            "nome": "Londrina",
+            "UF": {
+              "id": 41,
+              "sigla": "PR",
+              "nome": "Paraná",
+              "regiao": { "id": 4, "sigla": "S", "nome": "Sul" }
+            }
+          }
+        }
+      },
+      "... (399 municípios no total)"
+    ]
+  },
+
+  "GET /municipios/busca?nome=curitiba": {
+    "busca": "curitiba",
+    "total_encontrado": 1,
+    "fonte": "https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
+    "parametro_usado": "query string ?nome=",
+    "dados": [
+      {
+        "id": 4106902,
+        "nome": "Curitiba",
+        "microrregiao": {
+          "id": 41037,
+          "nome": "Curitiba",
+          "mesorregiao": {
+            "id": 4109,
+            "nome": "Metropolitana de Curitiba",
+            "UF": {
+              "id": 41,
+              "sigla": "PR",
+              "nome": "Paraná",
+              "regiao": { "id": 4, "sigla": "S", "nome": "Sul" }
+            }
+          }
+        }
+      }
+    ]
+  },
+
+  "GET /regioes": {
+    "total": 5,
+    "fonte": "https://servicodados.ibge.gov.br/api/v1/localidades/regioes",
+    "dados": [
+      { "id": 1, "sigla": "N",  "nome": "Norte" },
+      { "id": 2, "sigla": "NE", "nome": "Nordeste" },
+      { "id": 3, "sigla": "SE", "nome": "Sudeste" },
+      { "id": 4, "sigla": "S",  "nome": "Sul" },
+      { "id": 5, "sigla": "CO", "nome": "Centro-Oeste" }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────
+# Node.js
+# ─────────────────────────────────────────────
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache
+.npm
+.cache
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Arquivos temporários
+tmp/
+temp/
+
+# Cobertura de testes
+coverage/
+
+# Build
+dist/
+build/
+
+# Arquivos do sistema
+*.pid
+*.seed
+*.pid.lock
+
+# Histórico do REST Client (VS Code)
+*.history
+
+# Arquivos locais opcionais
+*.local
