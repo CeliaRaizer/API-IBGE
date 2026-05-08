@@ -1,7 +1,7 @@
 # Consumo e Análise da API do IBGE
 
-> **Disciplina:** Desenvolvimento Web II 
-> **API escolhida:** IBGE Serviço de Dados — Localidades  
+> **Disciplina:** Desenvolvimento Web II
+> **API escolhida:** IBGE Serviço de Dados — Localidades
 > **Documentação oficial:** https://servicodados.ibge.gov.br/api/docs/localidades
 
 ---
@@ -10,23 +10,23 @@
 
 ### 1. Qual o propósito da API?
 
-A ***API de Serviço de Dados do IBGE tem como principal objetivo disponibilizar dados oficiais do Brasil de forma pública e acessível pela internet. Por meio dela, desenvolvedores conseguem consultar informações sobre estados, municípios, regiões e diversos indicadores estatísticos sem precisar acessar manualmente o site do IBGE.
+A API de Serviço de Dados do IBGE tem como principal objetivo disponibilizar dados oficiais do Brasil de forma pública e acessível pela internet. Por meio dela, desenvolvedores conseguem consultar informações sobre estados, municípios, regiões e diversos indicadores estatísticos sem precisar acessar manualmente o site do IBGE.
 
-Neste trabalho, utilizamos o módulo **Localidades**, que é o mais simples e didático para demonstrar o consumo de uma API REST.
+Neste trabalho, utilizamos o módulo **Localidades**, para demonstrar o consumo de uma API REST.
 
 ---
 
-### 2. Base URL
+### 2. Qual é a Base URL?
+
+Esta é a URL base utilizada pelo IBGE:
 
 ```
 https://servicodados.ibge.gov.br/api/v1
 ```
 
-A URL base já revela o **versionamento** da API (`/v1`). Existe também a `v2` e `v3` para módulos mais recentes (Agregados, por exemplo), mas o módulo de Localidades usa `v1`.
-
 ---
 
-### 3. Principais Endpoints
+### 3. Quais são os principais endpoints?
 
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
@@ -42,23 +42,32 @@ A URL base já revela o **versionamento** da API (`/v1`). Existe também a `v2` 
 
 ---
 
-### 4. Possui autenticação?
+### 4. A API possui autenticação?
 
 **Não.** A API do IBGE é completamente pública e **não exige nenhuma autenticação**.
 
-Não é necessário:
+---
+
+### 5. Qual o tipo de autenticação? (API Key, Bearer Token, OAuth etc.)
+
+Por ser uma API pública, **não há nenhum tipo de autenticação** — não são necessários:
+
 - API Key
 - Bearer Token
 - OAuth
 - Cadastro ou login
 
-Isso a torna ideal para estudos e protótipos, pois qualquer `GET` já retorna dados reais.
+---
 
-> ⚠️ Por não ter autenticação, a API também não tem rate limit documentado, mas é recomendável não fazer muitas requisições simultâneas para não sobrecarregar os servidores públicos.
+### 6. Onde é enviada? (header, query, body)
+
+Como a API **não possui autenticação**, nenhuma credencial é enviada em header, query string ou body. As requisições são feitas diretamente, sem nenhum parâmetro adicional de segurança.
+
+> Por não ter autenticação, é recomendável não fazer muitas requisições simultâneas para não sobrecarregar os servidores públicos.
 
 ---
 
-### 5. Versionamento da API
+### 7. A API possui versão? Como o versionamento é tratado?
 
 **Sim**, a API possui versionamento explícito na URL:
 
@@ -69,22 +78,20 @@ https://servicodados.ibge.gov.br/api/v3/agregados/...
 ```
 
 **Como o versionamento é tratado:**
+
 - O número da versão fica no **path** (segmento da URL), padrão `v1`, `v2`, `v3`
 - Cada versão pode ter endpoints e formatos de resposta diferentes
-- O módulo **Localidades** está na `v1`, que ainda é a versão estável e mais utilizada
-- O módulo **Agregados** (dados estatísticos) usa `v3`
 - Não há header `API-Version` nem negociação via `Accept` — o versionamento é puramente por URL
 
 ---
 
-### 6. A API utiliza HATEOAS?
+### 8. A API utiliza HATEOAS?
 
-**Não.** A API do IBGE **não implementa HATEOAS** (Hypermedia as the Engine of Application State).
+**Não.** A API do IBGE **não implementa HATEOAS**.
 
-HATEOAS exigiria que cada resposta trouxesse links para ações relacionadas, como:
+HATEOAS exigiria que cada resposta trouxesse links para ações relacionadas, como por exemplo:
 
 ```json
-// Exemplo de HATEOAS (não é assim que o IBGE retorna)
 {
   "id": 41,
   "nome": "Paraná",
@@ -111,13 +118,11 @@ O que a API retorna de fato é um objeto simples, sem links navegáveis:
 }
 ```
 
-A ausência de HATEOAS coloca a API no nível **2 do Modelo de Maturidade de Richardson** (possui recursos e verbos HTTP), mas não no nível 3 (hypermedia).
-
 ---
 
-### 7. Tipo de resposta
+### 9. Qual é o tipo de resposta?
 
-A API retorna exclusivamente **JSON** (`application/json`).
+A API retorna exclusivamente **JSON**.
 
 - Não há suporte a XML
 - Não há suporte a CSV via headers de negociação
@@ -125,7 +130,7 @@ A API retorna exclusivamente **JSON** (`application/json`).
 
 ---
 
-### 8. Estrutura de um objeto retornado
+### 10. Qual é a estrutura de um objeto retornado?
 
 **Objeto: Estado**
 
@@ -172,7 +177,7 @@ A API retorna exclusivamente **JSON** (`application/json`).
     "regiao-intermediaria": {
       "id": 4104,
       "nome": "Londrina",
-      "UF": { ... }
+      "UF": { "..." : "..." }
     }
   }
 }
@@ -181,6 +186,37 @@ A API retorna exclusivamente **JSON** (`application/json`).
 O objeto município demonstra um padrão de **embedding** (objetos aninhados), onde a hierarquia geográfica completa é retornada dentro de cada município, sem precisar de requisições adicionais.
 
 ---
+
+## 📁 Estrutura do Projeto
+
+```
+ibge-api-trabalho/
+├── src/
+│   └── server.js                  # Servidor Node.js + Express
+├── postman/
+│   └── IBGE_API_Colecao.postman_collection.json
+├── exemplos-resposta/
+│   └── respostas.json             # Exemplos reais das respostas
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Como Rodar
+
+```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Rodar o servidor
+npm start
+# ou com hot-reload:
+npm run dev
+
+# Servidor disponível em: http://localhost:3000
+```
+
 
 ## 📡 Endpoints do Servidor Local
 
@@ -234,31 +270,6 @@ Accept: application/json
 GET http://localhost:3000/regioes/4/estados
 Accept: application/json
 ```
-
----
-
-## 🏗️ Decisões de Implementação
-
-### Por que Express?
-Framework minimalista e amplamente usado no mercado, ideal para construir servidores HTTP rapidamente sem overhead. Permite focar na lógica de consumo da API.
-
-### Por que Axios?
-- Suporte nativo a `async/await`
-- Configuração de `baseURL` e `timeout` via instância
-- Tratamento de erros HTTP mais claro que o `fetch` nativo
-
-### Padrão de proxy reverso
-O servidor Node.js atua como um **proxy** para a API do IBGE, o que permite:
-- Adicionar lógica própria (ordenação, filtragem por nome)
-- Enriquecer as respostas com metadados (`total`, `fonte`, `parametro_usado`)
-- Centralizar o tratamento de erros
-
-### Tratamento de erros
-Todos os erros passam pela função `handleError()`, que diferencia:
-- Erros da API do IBGE (repassa o status HTTP)
-- Timeout de conexão (504)
-- Erros internos do servidor (500)
-
 ---
 
 ## 📚 Documentação Oficial
@@ -266,36 +277,4 @@ Todos os erros passam pela função `handleError()`, que diferencia:
 - **Swagger UI do IBGE:** https://servicodados.ibge.gov.br/api/docs/localidades
 - **Portal de APIs do IBGE:** https://servicodados.ibge.gov.br/api/docs
 
-
-## 📁 Estrutura do Projeto
-
-```
-ibge-api-trabalho/
-├── src/
-│   └── server.js                  # Servidor Node.js + Express
-├── postman/
-│   └── IBGE_API_Colecao.postman_collection.json
-├── exemplos-resposta/
-│   └── respostas.json             # Exemplos reais das respostas
-├── package.json
-└── README.md
-```
-
 ---
-
-## 🚀 Como Rodar
-
-```bash
-# 1. Instalar dependências
-npm install
-
-# 2. Rodar o servidor
-npm start
-# ou com hot-reload:
-npm run dev
-
-# Servidor disponível em: http://localhost:3000
-```
-
----
-
